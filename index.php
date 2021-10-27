@@ -52,8 +52,13 @@ $pdo->exec("UPDATE pessoas SET nome='$nome' WHERE id=12") /*Deve sempre indicar 
         <form class="form-group" action="" method="post">
             <label for="nome">Nome:</label>
             <input type="text" name="nome"><br>
-            <label for="email">Email:</label>
-            <input type="text" name="email">
+
+            <div class="mb-3">
+                <label for="InputEmail" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="InputEmail" id="InputEmail" placeholder="name@example.com">
+            </div>
+
+
             <input type="submit" value="Enviar">
         </form>
 
