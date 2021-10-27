@@ -35,6 +35,7 @@ $pdo->exec("UPDATE pessoas SET nome='$nome' WHERE id=12") /*Deve sempre indicar 
     <title>Cadastro Pessoas</title>
 
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
 
     <!-- video font awesome -->
@@ -48,33 +49,39 @@ $pdo->exec("UPDATE pessoas SET nome='$nome' WHERE id=12") /*Deve sempre indicar 
 
 <body>
     <div class="container">
+        <div class="form">
 
-        <form class="form-group" action="" method="post">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome"><br>
-
-            <div class="mb-3">
-                <label for="InputEmail" class="form-label">Email:</label>
-                <input type="email" class="form-control" name="InputEmail" id="InputEmail" placeholder="name@example.com">
-            </div>
+            <form class="form-group" action="" method="post">
 
 
-            <input type="submit" value="Enviar">
-        </form>
+                <div class="row">
+                    <div class="col">
+                        <label for="InputNome" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" name="InputNome" id="InputNome" placeholder="Digite seu nome">
+                    </div>
+                    <div class="col">
+                        <label for="InputEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" name="InputEmail" id="InputEmail" placeholder="name@example.com">
+                    </div>
+                </div>
 
-        <?php
-        $sql = $pdo->prepare("SELECT * FROM pessoas");
-        $sql->execute();
+                <input type="submit" value="Enviar"><br>
+                <?php
+                $sql = $pdo->prepare("SELECT * FROM pessoas");
+                $sql->execute();
 
-        $fetchClientes = $sql->fetchAll();
+                $fetchClientes = $sql->fetchAll();
 
-        foreach ($fetchClientes as $key => $value) {
-            echo '<a  href="?delete=' . $value['id'] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>' . $value['nome'] . ' | ' . $value['email'];
-            echo '<br>';
-            echo '<hr>';
-        }
-        ?>
+                foreach ($fetchClientes as $key => $value) {
+                    echo '<a  href="?delete=' . $value['id'] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>' . $value['nome'] . ' | ' . $value['email'];
+                    echo '<br>';
+                    echo '<hr>';
+                }
+                ?>
+            </form>
 
+
+        </div>
     </div>
 
 </body>
